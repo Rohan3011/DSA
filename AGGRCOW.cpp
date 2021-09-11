@@ -1,6 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std ;
 
+// O(N logN) solution
 int binarySearch(int arr[] , int n , int c) {
 	int l = 0 , r = arr[n - 1] - arr[0] , ans = 0 ;
 	while (l <= r) {
