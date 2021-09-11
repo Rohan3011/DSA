@@ -18,18 +18,18 @@ int lowerBound(int arr[] , int n , int value) {
 int main() {
 	int n ;
 	cin >> n ;
-	int arr[n] , preffixsum[n];
+	int arr[n] , prefixsum[n];
 	for (int i = 0 ; i < n ; i++) cin >> arr[i] ;
 	sort(arr , arr + n) ;
-	preffixsum[0] = arr[0] ;
+	prefixsum[0] = arr[0] ;
 	for (int i = 1 ; i < n ; i++)
-		preffixsum[i] = arr[i] + preffixsum[i - 1];
+		prefixsum[i] = arr[i] + prefixsum[i - 1];
 	int q ;
 	cin >> q ;
 	while (q--) {
 		int bishuPower ;
 		cin >> bishuPower ;
 		int ans = lowerBound(arr , n , bishuPower) ;
-		cout << ans + 1 << " " <<  preffixsum[ans] << "\n";
+		cout << ans + 1 << " " <<  prefixsum[ans] << "\n";
 	}
 }
