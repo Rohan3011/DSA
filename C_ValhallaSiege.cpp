@@ -17,6 +17,7 @@ int upperBound(ll arr[] , ll n , ll value) {
 }
 
 int main() {
+	ios::sync_with_stdio(0); cin.tie(0);
 	ll n , q ;
 	cin >> n >> q ;
 	ll warriors[n] , arrows[q] , prefixsum[n] ;
