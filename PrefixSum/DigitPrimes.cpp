@@ -1,5 +1,4 @@
-#include <bits/stdc++.h>
-using namespace std ;
+#include <stdio.h>
 typedef long long ll ;
 
 const int N = 1000001 ;
