@@ -2,8 +2,8 @@
 using namespace std ;
 typedef long long ll ;
 
-ll arr[1001][1001];
-ll diff[1001][1001];
+ll arr[1002][1002];
+ll diff[1002][1002];
 
 void createDiffArr(int n , int m) ;
 void prefixSumArr(int n , int m) ;
@@ -13,11 +13,8 @@ int main() {
     int n , m , u , q ;
     cin >> n >> m >> u >> q ;
     for (int i = 0 ; i < n ; i++) {
-        for (int j = 0 ; j < m ; j++) {
-            ll x ;
-            cin >> x ;
-            arr[i][j] = x ;
-        }
+        for (int j = 0 ; j < m ; j++)
+            cin >> arr[i][j] ;
     }
     createDiffArr(n , m) ;
 
@@ -30,9 +27,11 @@ int main() {
         if (r2 + 1 < n) diff[r2 + 1][c1] -= k ;
         if (r2 + 1 < n && c2 + 1 < m )diff[r2 + 1][c2 + 1] += k ;
     }
+    // twice because one's for the difference array and other to compute prefix sum
     prefixSumArr(n , m) ;
     prefixSumArr(n , m) ;
     while (q--) {
+        // It gives SIGSEV when variables are not initialized
         int r1 , c1 , r2 , c2 ;
         cin >> r1 >> c1 >> r2 >> c2 ;
         ll ans = diff[r2][c2] ;
@@ -41,6 +40,7 @@ int main() {
         if (r1 - 1 >= 0 && c1 - 1 >= 0 ) ans += diff[r1 - 1][c1 - 1] ;
         cout << ans << "\n" ;
     }
+    return 0 ;
 }
 
 void createDiffArr(int n , int m) {
