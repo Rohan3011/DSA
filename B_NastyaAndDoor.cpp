@@ -18,8 +18,8 @@ int main() {
 		for (int i = 1 ; i <= n ; i++)
 			prefix[i] = peek[i] + prefix[i - 1] ;
 		for (int i = 1;  i <= n - k + 1 ; i++ ) {
-			/*	exclude the boundaries (first and last index) of segment
-				 because a peek cannot exist with single neighbour */
+			/* exclude the boundaries (first and last index) of segment
+			 because a peek cannot exist with single neighbour */
 			int temp = prefix[i + k - 2] - prefix[i] ;
 			if (temp > ans) {
 				ans = temp ;
