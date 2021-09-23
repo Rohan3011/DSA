@@ -1,35 +1,42 @@
-#include<iostream>
+#include<bits/stdc++.h>
 using namespace std ;
 
-const int N = 1e7;
-bool sieve[N + 1] = {true} ;
-void createSieve() {
-	// memset(sieve , true , sizeof(sieve));
-	for (int i = 2 ; i * i <= N ; i++) {
+vector<int> createSieve() {
+	const int limit = 1000009;
+	bool sieve[limit + 1] ;
+	memset(sieve , true , sizeof(sieve));
+	vector<int> primes ;
+	for (int  i = 2 ; i * i <= limit ; i++) {
 		if (sieve[i]) {
-			for (int j = i * i ; j <= N ; j += i)
-				sieve[i] = false ;
+			for (int j = i * i ; j <= limit ; j += i)
+				sieve[j] = false ;
 		}
 	}
+	for (int i = 2 ; i <= limit ; i++) {
+		if (sieve[i])
+			primes.push_back(i) ;
+	}
+	return primes;
 }
 
-int lowerBound(int n) {
-	int low = 2 , high = N + 1 , ans = 0 ;
+int lowerBound(int n , vector<int> primes) {
+	int low = 0 , high = primes.size(), ans = 0 ;
 	while (high >= low) {
 		int mid = low + (high - low) / 2 ;
-		if (mid <= n) {
+		if (primes[mid] <= n ) {
 			ans = mid ;
 			low = mid + 1 ;
 		}
 		else
 			high = mid - 1;
 	}
-	return ans ;
+	if (ans + 1 < primes.size() && primes[ans + 1] - n < n - primes[ans])
+		ans++;
+	return primes[ans] ;
 }
-
 int main() {
-	createSieve() ;
+	vector<int> primes =  createSieve() ;
 	int n ;
 	cin >> n ;
-	cout << lowerBound(n) << "\n" ;
+	cout << lowerBound(n , primes) << "\n" ;
 }
