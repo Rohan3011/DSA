@@ -27,7 +27,7 @@ public:
 	void reverseList();
 };
 
-// constructs the linked list with given values
+// construct's the linked list with given values
 void LinkedList::constructList(vector<int> values) {
 	for (auto &u : values)
 		this->insertNode(u);
