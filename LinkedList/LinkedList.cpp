@@ -15,28 +15,28 @@ public:
 
 class LinkedList
 {
-	Node *head ;
 public:
 	LinkedList() {
 		head = NULL;
 	};
-	void constructList(vector<int>);
-	void insertNode(int);
-	void deleteNode(int);
-	void printList();
-	void reverseList();
+	Node *head ;
+	void construct(vector<int>);
+	void insert(int);
+	void remove(int);
+	void print();
+	void reverse();
 };
 
 // construct's the linked list with given values
-void LinkedList::constructList(vector<int> values) {
+void LinkedList::construct(vector<int> values) {
 	for (auto &u : values)
-		this->insertNode(u);
+		this->insert(u);
 }
 
 
 
-// Insert's the element at the end (tail)
-void LinkedList::insertNode(int data) {
+// insert's the element at the end (tail)
+void LinkedList::insert(int data) {
 	Node* newNode = new Node(data);
 
 	if (head == NULL) {
@@ -51,7 +51,7 @@ void LinkedList::insertNode(int data) {
 }
 
 // prints the Linked List
-void LinkedList::printList() {
+void LinkedList::print() {
 	Node* temp = head;
 	while (temp) {
 		cout << temp->data << "->";
@@ -61,7 +61,7 @@ void LinkedList::printList() {
 }
 
 // delete's the node with given index (zero based)
-void LinkedList::deleteNode(int nodeIndex) {
+void LinkedList::remove(int nodeIndex) {
 	Node* temp = head;
 	if (!nodeIndex) {
 		Node* newHead = head->next ;
@@ -83,7 +83,7 @@ void LinkedList::deleteNode(int nodeIndex) {
 	delete removeNode;
 }
 // reverse's the linked list  (Iterative Method)
-void LinkedList::reverseList() {
+void LinkedList::reverse() {
 	Node *prevNode = NULL , *nextNode = NULL , *currNode = head ;
 	while (currNode) {
 		nextNode = currNode->next;
@@ -92,19 +92,4 @@ void LinkedList::reverseList() {
 		currNode = nextNode;
 	}
 	head = prevNode;
-}
-
-int main() {
-	int n ;
-	cin >> n ;
-	vector<int> values(n);
-	for (auto &v : values) cin >> v ;
-
-	LinkedList list ;
-	list.constructList(values);
-	list.printList();
-	list.deleteNode(4);
-	list.printList();
-	list.reverseList();
-	list.printList();
 }
