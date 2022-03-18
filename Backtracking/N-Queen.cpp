@@ -32,7 +32,7 @@ int main() {
 bool isSafe(int row, int col, vector<vector<bool>> &board) {
   int n = board.size();
 
-  // row [[current approach doesn't need to check for row]]
+  // row
   for (int x = 0; x < n; x++) {
     if (board[x][col])
       return false;
@@ -50,20 +50,8 @@ bool isSafe(int row, int col, vector<vector<bool>> &board) {
       return false;
   }
 
-  // bottom-right diagonal
-  for (int x = row, y = col; x < n && y < n; x++, y++) {
-    if (board[x][y])
-      return false;
-  }
-
   // upper-right diagonal
   for (int x = row, y = col; x >= 0 && y < n; x--, y++) {
-    if (board[x][y])
-      return false;
-  }
-
-  // bottom-left diagonal
-  for (int x = row, y = col; x < n && y >= 0; x++, y--) {
     if (board[x][y])
       return false;
   }
