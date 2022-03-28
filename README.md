@@ -1,2 +1,2 @@
-# Leetcoding
+# DSA
 Solving DSA question
