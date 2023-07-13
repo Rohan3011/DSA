@@ -1,7 +1,7 @@
 class Node:
     def __init__(self, value):
-        self.left: Node = None
-        self.right: Node = None
+        self.left: Node | None = None
+        self.right: Node | None = None
         self.data = value
 
     def preorder(self):
